@@ -22,7 +22,7 @@ public class BlueprintDAOTest {
         int successfulSave = blueprintDAO.addBlueprint(blueprint);
         Assert.assertEquals(1, successfulSave);
     }
-    /*
+    
     @Test
     public void testUpdateProjectSuccessfullu() {    
         Date startDate = new Date((2024-1900), (10-1), 1);
@@ -36,25 +36,27 @@ public class BlueprintDAOTest {
     public void testConsultBlueprintByTitle() {
         BlueprintDAO blueprint = new BlueprintDAO();
         Blueprint blueprintResult;
-        String blueprintTitleExpected = "Teoria de los microservicios";
+        String blueprintTitleExpected = "Teoría de los microservicios";
         blueprintResult = blueprint.consultBlueprintByTitle(blueprintTitleExpected);
         String blueprintTitleActual = blueprintResult.getTitle();
         Assert.assertEquals("Prueba obtener otro Anteprojecto", blueprintTitleExpected, blueprintTitleActual);
     }
     
+    @Test
     public void testConsultBlueprintByDate() {
+        Date startDate = new Date((2024-1900), (10-1), 1);
         BlueprintDAO blueprint = new BlueprintDAO();
         Blueprint blueprintResult;
-        String blueprintDateExpected = (new SimpleDateFormat("yyyy-MM-dd").format("2024-09-01"));
+        String blueprintDateExpected = (new SimpleDateFormat("yyyy-MM-dd").format(startDate));
         blueprintResult = blueprint.consultBlueprintByDate(blueprintDateExpected);
         String blueprintDateActual = (new SimpleDateFormat("yyyy-MM-dd").format(blueprintResult.getStartDate()));
         Assert.assertEquals("Prueba obtener otro Anteprojecto", blueprintDateExpected, blueprintDateActual);
     }
-    
+   
     @Test
     public void testDeleteBlueprintByTitle() {
         BlueprintDAO blueprint = new BlueprintDAO();
-        int deleteResult = blueprint.deleteBlueprintByTitle("Teoria de los microservicios");
+        int deleteResult = blueprint.deleteBlueprintByTitle("Teoría de los microservicios");
         Assert.assertEquals(1, deleteResult);
-    }*/
+    }
 }

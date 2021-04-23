@@ -19,7 +19,7 @@ public class BlueprintDAO implements IBlueprintDAO {
 
     @Override
     public int addBlueprint(Blueprint blueprint) {
-        String query = "INSERT INTO blueprint (Title, StartDate, AssociatedLGAC, Satatus, Modality, Student, Description, Co-directors, project_Title) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO blueprint (Title, StartDate, AssociatedLGAC, Satatus, Modality, Student, Description, Codirectors, project_Title) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         String startDate = (new SimpleDateFormat("yyyy-MM-dd").format(blueprint.getStartDate()));
         int result = 0;
         try {
@@ -44,7 +44,7 @@ public class BlueprintDAO implements IBlueprintDAO {
 
     @Override
     public int modifyBlueprint(Blueprint blueprint) {
-        String query = "UPDATE blueprint SET Title = ?, StartDate = ?, AssociatedLGAC = ?, Satatus = ?, Modality = ?, Student = ?, Description  = ?, Co-directors = ?, project_Title = ?) WHERE TITLE = ?";
+        String query = "UPDATE blueprint SET Title = ?, StartDate = ?, AssociatedLGAC = ?, Satatus = ?, Modality = ?, Student = ?, Description  = ?, Codirectors = ?, project_Title = ? WHERE Title = ?";
         String startDate = (new SimpleDateFormat("yyyy-MM-dd").format(blueprint.getStartDate()));
         int result = 0;
         try {
@@ -70,7 +70,7 @@ public class BlueprintDAO implements IBlueprintDAO {
 
     @Override
     public Blueprint consultBlueprintByTitle(String blueprintTitle) {
-        String query = "SELECT Title, StartDate, AssociatedLGAC, Satatus, Modality, Student, Description, Co-directors, project_Title WHERE Title = ?";
+        String query = "SELECT Title, StartDate, AssociatedLGAC, Satatus, Modality, Student, Description, Codirectors, project_Title FROM blueprint WHERE Title = ?";
         Blueprint blueprint = new Blueprint();
         try {
             PreparedStatement preparedStatement = connection.getConnection().prepareStatement(query);
@@ -84,7 +84,7 @@ public class BlueprintDAO implements IBlueprintDAO {
                 blueprint.setModality(resultSet.getString("Modality"));
                 blueprint.setStudent(resultSet.getString("Student"));
                 blueprint.setDescription(resultSet.getString("Description"));
-                blueprint.setCodirectors(resultSet.getString("Co-directors"));
+                blueprint.setCodirectors(resultSet.getString("Codirectors"));
                 blueprint.setProjectTitle(resultSet.getString("project_Title"));
             }  
         } catch (SQLException ex) {
@@ -97,7 +97,7 @@ public class BlueprintDAO implements IBlueprintDAO {
 
     @Override
     public Blueprint consultBlueprintByDate(String blueprintDate) {
-        String query = "SELECT Title, StartDate, AssociatedLGAC, Satatus, Modality, Student, Description, Co-directors, project_Title WHERE StartDate = ?";
+        String query = "SELECT Title, StartDate, AssociatedLGAC, Satatus, Modality, Student, Description, Codirectors, project_Title FROM blueprint WHERE StartDate = ?";
         Blueprint blueprint = new Blueprint();
         try {
             PreparedStatement preparedStatement = connection.getConnection().prepareStatement(query);
@@ -111,7 +111,7 @@ public class BlueprintDAO implements IBlueprintDAO {
                 blueprint.setModality(resultSet.getString("Modality"));
                 blueprint.setStudent(resultSet.getString("Student"));
                 blueprint.setDescription(resultSet.getString("Description"));
-                blueprint.setCodirectors(resultSet.getString("Co-directors"));
+                blueprint.setCodirectors(resultSet.getString("Codirectors"));
                 blueprint.setProjectTitle(resultSet.getString("project_Title"));
             }  
         } catch (SQLException ex) {
