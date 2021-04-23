@@ -45,13 +45,12 @@ public class WorkplanDAO implements IWorkplanDAO {
     @Override
     public Workplan consultWorkplanByKeyCode(String workplanKeyCode){
         String query = "SELECT Keycode, StartDate, FinishDate, member_FullName FROM workplan WHERE Keycode = ?";
-        Workplan workplan = null; 
+        Workplan workplan = new Workplan(); 
         try {
             PreparedStatement preparedStatement = connection.getConnection().prepareStatement(query);
             preparedStatement.setString(1, workplanKeyCode);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                workplan = new Workplan();
                 workplan.setKeyCode(resultSet.getString("Keycode"));                    
                 workplan.setStartDate(resultSet.getDate("StartDate"));
                 workplan.setFinishDate(resultSet.getDate("FinishDate")); 

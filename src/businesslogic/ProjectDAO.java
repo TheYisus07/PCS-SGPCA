@@ -23,8 +23,7 @@ public class ProjectDAO implements IProjectDAO {
     @Override
     public ArrayList<Project> consultListOfProjects() {
         ArrayList<Project> arrayListProjects = new ArrayList<>();
-       String query = "SELECT Title, EstimatedFinishDate, StartDate, AssociatesIGAC, Description, Participants, member_FullName FROM project";
-
+        String query = "SELECT Title, EstimatedFinishDate, StartDate, AssociatesIGAC, Description, Participants, member_FullName FROM project";
         try {
             Statement statement = connection.getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery(query);
@@ -44,7 +43,6 @@ public class ProjectDAO implements IProjectDAO {
         String estimatedFinishDate = (new SimpleDateFormat("yyyy-MM-dd").format(project.getEstimedFinishDate()));
         String startDate = (new SimpleDateFormat("yyyy-MM-dd").format(project.getStartDate()));
         String query = "INSERT INTO project (Title, EstimatedFinishDate, StartDate, AssociatesIGAC, Description, Participants, member_FullName) VALUES (?, ?, ?, ?, ?, ?, ?)";
-
         int result = 0;
         try {
             PreparedStatement preparedStatement = connection.getConnection().prepareStatement(query);
@@ -91,13 +89,12 @@ public class ProjectDAO implements IProjectDAO {
     @Override
     public Project consultProjectByTitle(String projectTitle) {
         String query = "SELECT Title, EstimatedFinishDate, StartDate, AssociatesIGAC, Description, Participants, member_FullName FROM project WHERE Title = ?";
-        Project project = null; 
+        Project project = new Project();
         try {
             PreparedStatement preparedStatement = connection.getConnection().prepareStatement(query);
             preparedStatement.setString(1, projectTitle);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                project = new Project();
                 project.setTitle(resultSet.getString("Title"));
                 project.setEstimedFinishDate(resultSet.getDate("EstimatedFinishDate"));
                 project.setStartDate(resultSet.getDate("StartDate"));
