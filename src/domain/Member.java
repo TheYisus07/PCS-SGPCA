@@ -6,56 +6,71 @@ import java.util.Date;
  * @author Javier Blas
  */
 public class Member {
-    private String name; 
-    private String levelOfStudy;
-    private String studyArea;
+    private String fullName;
+    private Date dateOfBirth;
+    private String curp;
+    private String phoneNumber;
+    private String institutionalMail;
     private String discipline;
-    private boolean prodepParticipation;
+    private String studyGrade;
+    private String studyArea;
     private String typeOfTeaching;
     private String lgac;
     private String ies;
-    private int phoneNumber;
-    private String institutionalMail;
-    private Date dateOfBirth;
-    private String curp;
-    private String caCharge;
+    private String prodepParticipation;
+    private String position;
+    private String keycodeAcademicGroup;
 
-    public Member() {}
-    
-    public Member(String name, String levelOfStudy, String studyArea, String discipline, boolean prodepParticipation, String typeOfTeaching, String lgac, String ies, int phoneNumber, String institutionalMail, Date dateOfBirth, String curp, String caCharge) {
-        this.name = name;
-        this.levelOfStudy = levelOfStudy;
-        this.studyArea = studyArea;
+    public Member(String fullName, Date dateOfBirth, String curp, String phoneNumber, String institutionalMail, String discipline, String studyGrade, String studyArea, String typeOfTeaching, String lgac, String ies, String prodepParticipation, String position, String keycodeAcademicGroup) {
+        this.fullName = fullName;
+        this.dateOfBirth = dateOfBirth;
+        this.curp = curp;
+        this.phoneNumber = phoneNumber;
+        this.institutionalMail = institutionalMail;
         this.discipline = discipline;
-        this.prodepParticipation = prodepParticipation;
+        this.studyGrade = studyGrade;
+        this.studyArea = studyArea;
         this.typeOfTeaching = typeOfTeaching;
         this.lgac = lgac;
         this.ies = ies;
-        this.phoneNumber = phoneNumber;
-        this.institutionalMail = institutionalMail;
-        this.dateOfBirth = dateOfBirth;
-        this.curp = curp;
-        this.caCharge = caCharge;
+        this.prodepParticipation = prodepParticipation;
+        this.position = position;
+        this.keycodeAcademicGroup = keycodeAcademicGroup;
     }
 
-    public String getName() {
-        return name;
+    public Member() {
     }
 
-    public String getLevelOfStudy() {
-        return levelOfStudy;
+    public String getFullName() {
+        return fullName;
     }
 
-    public String getStudyArea() {
-        return studyArea;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getCurp() {
+        return curp;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public String getInstitutionalMail() {
+        return institutionalMail;
     }
 
     public String getDiscipline() {
         return discipline;
     }
 
-    public boolean isProdepParticipation() {
-        return prodepParticipation;
+    public String getStudyGrade() {
+        return studyGrade;
+    }
+
+    public String getStudyArea() {
+        return studyArea;
     }
 
     public String getTypeOfTeaching() {
@@ -70,44 +85,52 @@ public class Member {
         return ies;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public String isProdepParticipation() {
+        return prodepParticipation;
     }
 
-    public String getInstitutionalMail() {
-        return institutionalMail;
+    public String getPosition() {
+        return position;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public String getKeycodeAcademicGroup() {
+        return keycodeAcademicGroup;
     }
 
-    public String getCurp() {
-        return curp;
+    public String getProdepParticipation() {
+        return prodepParticipation;
+    }
+    
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getCaCharge() {
-        return caCharge;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCurp(String curp) {
+        this.curp = curp;
     }
 
-    public void setLevelOfStudy(String levelOfStudy) {
-        this.levelOfStudy = levelOfStudy;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public void setStudyArea(String studyArea) {
-        this.studyArea = studyArea;
+    public void setInstitutionalMail(String institutionalMail) {
+        this.institutionalMail = institutionalMail;
     }
 
     public void setDiscipline(String discipline) {
         this.discipline = discipline;
     }
 
-    public void setProdepParticipation(boolean prodepParticipation) {
-        this.prodepParticipation = prodepParticipation;
+    public void setStudyGrade(String studyGrade) {
+        this.studyGrade = studyGrade;
+    }
+
+    public void setStudyArea(String studyArea) {
+        this.studyArea = studyArea;
     }
 
     public void setTypeOfTeaching(String typeOfTeaching) {
@@ -122,24 +145,15 @@ public class Member {
         this.ies = ies;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setProdepParticipation(String prodepParticipation) {
+        this.prodepParticipation = prodepParticipation;
     }
 
-    public void setInstitutionalMail(String institutionalMail) {
-        this.institutionalMail = institutionalMail;
+    public void setPosition(String position) {
+        this.position = position;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setKeycodeAcademicGroup(String keycodeAcademicGroup) {
+        this.keycodeAcademicGroup = keycodeAcademicGroup;
     }
-
-    public void setCurp(String curp) {
-        this.curp = curp;
-    }
-
-    public void setCaCharge(String caCharge) {
-        this.caCharge = caCharge;
-    }
-    
 }

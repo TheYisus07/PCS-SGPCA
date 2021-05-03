@@ -6,6 +6,7 @@ import domain.Blueprint;
  * 
  * @author daniCV
  */
+
 public interface IBlueprintDAO {
     public int addBlueprint(Blueprint blueprint);
     public int modifyBlueprint(Blueprint blueprint);

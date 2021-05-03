@@ -1,4 +1,5 @@
 package bussisslogic;
+
 import businesslogic.WorkplanDAO;
 import domain.Objective;
 import domain.Strategy;

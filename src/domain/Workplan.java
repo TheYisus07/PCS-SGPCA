@@ -54,4 +54,9 @@ public class Workplan {
     public void setMemberFullName(String memberFullName) {
         this.memberFullName = memberFullName;
     }
+
+    @Override
+    public String toString() {
+        return "Workplan{" + "keyCode=" + keyCode + ", startDate=" + startDate + ", finishDate=" + finishDate + ", memberFullName=" + memberFullName + '}';
+    }
 }

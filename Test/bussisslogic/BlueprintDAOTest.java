@@ -24,7 +24,7 @@ public class BlueprintDAOTest {
     }
     
     @Test
-    public void testUpdateProjectSuccessfullu() {    
+    public void testUpdateProjectSuccessfully() {    
         Date startDate = new Date((2024-1900), (10-1), 1);
         BlueprintDAO blueprint = new BlueprintDAO();
         Blueprint updatedBlueprint = new Blueprint("Teoría de los microservicios", startDate, "LGAC1, LGCA2", "Asignada", "Tesina", "José Daniel Camarillo Villa", "Proyecto de investigación dedicado a la intervención...", "Jorge Octavio Ocharán Hernández", "Machine Learning");
