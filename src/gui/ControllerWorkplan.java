@@ -39,6 +39,7 @@ import javafx.util.Duration;
 public class ControllerWorkplan implements Initializable {
     private final WorkplanDAO workplanDAO = new WorkplanDAO();
     private final MemberDAO memberDAO = new MemberDAO();
+    private ControllerWorkplan controllerWorkplan; 
 
     @FXML
     private AnchorPane anchorPaneLateralMenu;
@@ -50,6 +51,8 @@ public class ControllerWorkplan implements Initializable {
     private Label labelAcademicGroup;
     @FXML
     private Label labelMemberName;
+    @FXML
+    private Label labelMemberEmail;
     @FXML
     private Label labelMemberPosition;
     @FXML
@@ -63,6 +66,7 @@ public class ControllerWorkplan implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        controllerWorkplan = this;
         fillComboBoxWithWorkplanNames();
         mainLateralMenu();
         showGuiObjective();
@@ -76,20 +80,27 @@ public class ControllerWorkplan implements Initializable {
             String workplanStartDate = Integer.toString(workplanDAO.consultListOfWorkplans().get(i).getStartDate().getYear() + 1900);
             String workplanFinishDate = Integer.toString(workplanDAO.consultListOfWorkplans().get(i).getFinishDate().getYear() + 1900);
             String comboBoxInfo = workplanName + " [" + workplanStartDate + "-" + workplanFinishDate + "]"; 
-            workplanList.add(workplanName);
+            workplanList.add(comboBoxInfo);
         }        
     }
-   
+    
+    public String getWorkplanKeycode() {
+        String comboBoxInfo = comboBoxWorkplanNames.getSelectionModel().getSelectedItem();
+        String[] parts = comboBoxInfo.split("\\[");
+        String workplanKeycode = parts[0].trim();
+        return workplanKeycode;
+    }
+    
     @FXML
-    public void selectComboBoxWorkplanNames(ActionEvent actionEvent) {
+    public void selectComboBoxWorkplanKeycodes(ActionEvent actionEvent) {
         tableViewObjectives.getItems().clear();
-        String workplanName = comboBoxWorkplanNames.getSelectionModel().getSelectedItem();
+        String workplanKeycode = getWorkplanKeycode();
         for (int i = 0; i < workplanDAO.consultListOfWorkplans().size(); i++) {
             String expectedWorplanName = workplanDAO.consultListOfWorkplans().get(i).getKeyCode();
-            if (workplanName.equals(expectedWorplanName)) {
+            if (workplanKeycode.equals(expectedWorplanName)) {
                 String memberName = workplanDAO.consultListOfWorkplans().get(i).getMemberFullName();
                 responsibleForTheWorkplan(memberName);
-                pendingObjectivesOfTheSelectedWorkplan(workplanName);
+                pendingObjectivesOfTheSelectedWorkplan(workplanKeycode);
             }
         }
     }
@@ -99,9 +110,11 @@ public class ControllerWorkplan implements Initializable {
             String expectedMemberName = memberDAO.consultMemberList().get(i).getFullName();
             if (memberName.equals(expectedMemberName)) {
                 String memberAcademicGroup = memberDAO.consultMemberList().get(i).getKeycodeAcademicGroup();
+                String memberInstitutionalMail = memberDAO.consultMemberList().get(i).getInstitutionalMail();
                 String memberPosition = memberDAO.consultMemberList().get(i).getPosition();
                 labelMemberName.setText(memberName);
                 labelAcademicGroup.setText(memberAcademicGroup);
+                labelMemberEmail.setText(memberInstitutionalMail);
                 labelMemberPosition.setText(memberPosition);
             }
         }
@@ -165,17 +178,21 @@ public class ControllerWorkplan implements Initializable {
         });
     }
     
-    public void showGuiObjective() {        
+    public void showGuiObjective() { 
         tableViewObjectives.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Objective>() {
             @Override
             public void changed(ObservableValue<? extends Objective> observable, Objective oldObjective, Objective newObjective) {
                 try {
+                    int objectiveId = tableViewObjectives.getSelectionModel().getSelectedItem().getObjectiveId();
                     Parent root = FXMLLoader.load(getClass().getResource("FXMLObjective.fxml"));
                     Scene scene = new Scene(root);
+                    
+                    FXMLLoader fXMLLoader = new FXMLLoader();
+                    ControllerObjective controllerObjective = (ControllerObjective) fXMLLoader.getController();
+                    System.out.println(objectiveId);
+                    //controllerObjective.getObjectiveTitleSelected(controllerWorkplan, objectiveId);
                     Stage stage = new Stage();
-                    stage.setTitle("Sistema Gestor de Productividad del Cuerpo Académico");
-                    stage.initStyle(StageStyle.UNDECORATED);
-                    stage.setResizable(false);
+                    stage.initStyle(StageStyle.UNDECORATED); 
                     stage.setScene(scene);
                     stage.show(); 
                 } catch (IOException ex) {

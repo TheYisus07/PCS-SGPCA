@@ -6,20 +6,28 @@ package domain;
  */
 
 public class Objective {
-    private String ObjectiveId;
+    private int ObjectiveId;
     private String title;
     private String description;
     private String status;
     private String workplanKeyCode;
 
-    public Objective(String title, String description, String status,String workplanKeyCode) {
+    public Objective(int ObjectiveId, String title, String description, String status, String workplanKeyCode) {
+        this.ObjectiveId = ObjectiveId;
         this.title = title;
         this.description = description;
         this.status = status;
         this.workplanKeyCode = workplanKeyCode;
     }
 
-    public String getObjectiveId() {
+    public Objective(String title, String description, String status, String workplanKeyCode) {
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.workplanKeyCode = workplanKeyCode;
+    }
+
+    public int getObjectiveId() {
         return ObjectiveId;
     }
 
@@ -39,7 +47,7 @@ public class Objective {
         return workplanKeyCode;
     }
 
-    public void setObjectiveId(String ObjectiveId) {
+    public void setObjectiveId(int ObjectiveId) {
         this.ObjectiveId = ObjectiveId;
     }
 
@@ -51,11 +59,11 @@ public class Objective {
         this.description = description;
     }
 
-    public void setWorkplanKeyCode(String workplanKeyCode) {
-        this.workplanKeyCode = workplanKeyCode;
-    }
-
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void setWorkplanKeyCode(String workplanKeyCode) {
+        this.workplanKeyCode = workplanKeyCode;
     }
 }

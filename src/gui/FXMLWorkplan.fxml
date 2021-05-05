@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" focusTraversable="true" prefHeight="695.0" prefWidth="850.0" style="-fx-background-color: #d1d1d1;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerWorkplan">
+<AnchorPane id="AnchorPane" focusTraversable="true" prefHeight="695.0" prefWidth="850.0" style="-fx-background-color: #d1d1d1;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ControllerWorkplan">
    <children>
       <AnchorPane layoutY="-4.0" prefHeight="55.0" prefWidth="850.0" style="-fx-background-color: #000000;">
          <opaqueInsets>
@@ -40,7 +40,7 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Label>
-            <ComboBox fx:id="comboBoxWorkplanNames" layoutX="420.0" layoutY="16.0" onAction="#selectComboBoxWorkplanNames" prefHeight="35.0" prefWidth="232.0" promptText="Seleccione una opción">
+            <ComboBox fx:id="comboBoxWorkplanNames" layoutX="420.0" layoutY="16.0" onAction="#selectComboBoxWorkplanKeycodes" prefHeight="35.0" prefWidth="232.0" promptText="Seleccione una opción">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ComboBox>
@@ -61,24 +61,30 @@
       </AnchorPane>
       <AnchorPane layoutX="89.0" layoutY="142.0" prefHeight="99.0" prefWidth="695.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Label layoutX="9.0" layoutY="9.0" text="Cuerpo Académico (CA): ">
+            <Label layoutX="9.0" layoutY="4.0" text="Cuerpo Académico (CA): ">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="9.0" layoutY="40.0" text="Nombre del miembro:">
+            <Label layoutX="9.0" layoutY="24.0" text="Nombre del miembro:">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="9.0" layoutY="71.0" text="Cargo en el cuerpo académico: ">
+            <Label layoutX="9.0" layoutY="73.0" text="Cargo en el cuerpo académico: ">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="labelAcademicGroup" layoutX="167.0" layoutY="6.0" prefHeight="18.0" prefWidth="518.0" />
-            <Label fx:id="labelMemberName" layoutX="151.0" layoutY="37.0" prefHeight="18.0" prefWidth="534.0" />
-            <Label fx:id="labelMemberPosition" layoutX="205.0" layoutY="69.0" prefHeight="18.0" prefWidth="482.0" />
+            <Label fx:id="labelAcademicGroup" layoutX="167.0" layoutY="4.0" prefHeight="18.0" prefWidth="518.0" />
+            <Label fx:id="labelMemberName" layoutX="151.0" layoutY="24.0" prefHeight="18.0" prefWidth="534.0" />
+            <Label fx:id="labelMemberPosition" layoutX="204.0" layoutY="73.0" prefHeight="1.0" prefWidth="482.0" />
+            <Label layoutX="9.0" layoutY="48.0" text="Correo institucional: ">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelMemberEmail" layoutX="140.0" layoutY="48.0" prefHeight="18.0" prefWidth="545.0" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="89.0" layoutY="265.0" prefHeight="436.0" prefWidth="695.0" style="-fx-background-color: #ffffff;">
@@ -95,7 +101,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorPaneMainWorplan" prefHeight="704.0" prefWidth="850.0" style="-fx-background-color: #FFFFFF;" />
+      <AnchorPane fx:id="anchorPaneMainWorplan" prefHeight="704.0" prefWidth="850.0" style="-fx-background-color: #FFFFFF;" visible="false" />
       <AnchorPane layoutX="-1.0" layoutY="51.0" prefHeight="653.0" prefWidth="55.0" style="-fx-background-color: #000000;">
          <children>
             <ImageView fx:id="imagenViewMainLateralMenu" fitHeight="48.0" fitWidth="48.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
@@ -108,7 +114,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorPaneLateralMenu" layoutX="54.0" layoutY="51.0" prefHeight="653.0" prefWidth="288.0" style="-fx-background-color: #000000;">
+      <AnchorPane fx:id="anchorPaneLateralMenu" layoutX="54.0" layoutY="51.0" prefHeight="653.0" prefWidth="288.0" style="-fx-background-color: #000000;" visible="false">
          <children>
             <VBox layoutX="-4.0" layoutY="74.0" prefHeight="578.0" prefWidth="295.0" style="-fx-background-color: #000000;">
                <children>

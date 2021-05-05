@@ -180,7 +180,7 @@ public class WorkplanDAO implements IWorkplanDAO {
     
     @Override
     public ArrayList<Objective> consultListOfObjectives() {
-        String query = "SELECT IDobjective, Title, Description, Status, workplan_Keycode FROM objective";
+        String query = "SELECT Title, Description, Status, workplan_Keycode FROM objective";
         ArrayList<Objective> arrayListObjectives = new ArrayList<>();     
         try {
             Statement statement = connection.getConnection().createStatement();
