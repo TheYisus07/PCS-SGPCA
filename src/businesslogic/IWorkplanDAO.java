@@ -16,5 +16,4 @@ public interface IWorkplanDAO {
     public int deleteStrategyByObjectiveId(int numberStrategy, int idObjective);
     public ArrayList<Objective> consultListOfObjectives();
     public ArrayList<Strategy> consulListOfStrategys();
-    public ArrayList<Objective> consulListOfObjectivesArchieved();
 }

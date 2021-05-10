@@ -16,17 +16,20 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="146.0" layoutY="9.0" prefHeight="18.0" prefWidth="534.0" />
+            <Label fx:id="labelObjectiveTitle" layoutX="146.0" layoutY="7.0" prefHeight="18.0" prefWidth="534.0" />
          </children>
       </AnchorPane>
-      <TableView layoutX="19.0" layoutY="156.0" prefHeight="209.0" prefWidth="658.0">
+      <TableView fx:id="tableViewObjectiveSelected" editable="true" layoutX="19.0" layoutY="156.0" prefHeight="209.0" prefWidth="658.0" tableMenuButtonVisible="true">
         <columns>
-          <TableColumn prefWidth="38.4000244140625" text="No." />
-          <TableColumn prefWidth="121.60003662109375" text="Estrategia" />
-            <TableColumn prefWidth="156.79998779296875" text="Meta" />
-            <TableColumn prefWidth="156.0" text="Acción" />
-            <TableColumn prefWidth="171.99993896484375" text="Resultado" />
+          <TableColumn fx:id="tableColumnObjectiveNumber" minWidth="-1.0" prefWidth="38.4000244140625" text="No." />
+          <TableColumn fx:id="tableColumnObjectiveStrategy" minWidth="-1.0" prefWidth="121.60003662109375" text="Estrategia" />
+            <TableColumn fx:id="tableColumnObjectiveGoal" minWidth="-1.0" prefWidth="156.79998779296875" text="Meta" />
+            <TableColumn fx:id="tableColumnObjectiveAction" editable="false" minWidth="-1.0" prefWidth="156.0" sortable="false" text="Acción" />
+            <TableColumn fx:id="tableColumnObjectiveResult" minWidth="-1.0" prefWidth="183.19998779296873" text="Resultado" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
       <Button fx:id="buttonCloseWindow" layoutX="600.0" layoutY="398.0" mnemonicParsing="false" onAction="#closeWindowObjective" prefHeight="35.0" text="CERRAR ">
          <font>
@@ -40,7 +43,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="16.0" layoutY="26.0" prefHeight="88.0" prefWidth="658.0" />
+            <Label fx:id="labelObjectiveDescription" alignment="TOP_LEFT" layoutX="16.0" layoutY="29.0" prefHeight="88.0" prefWidth="658.0" textAlignment="JUSTIFY" wrapText="true" />
          </children>
       </AnchorPane>
    </children>

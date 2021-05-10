@@ -180,13 +180,13 @@ public class WorkplanDAO implements IWorkplanDAO {
     
     @Override
     public ArrayList<Objective> consultListOfObjectives() {
-        String query = "SELECT Title, Description, Status, workplan_Keycode FROM objective";
+        String query = "SELECT IDobjective, Title, Description, Status, workplan_Keycode FROM objective";
         ArrayList<Objective> arrayListObjectives = new ArrayList<>();     
         try {
             Statement statement = connection.getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                arrayListObjectives.add(new Objective(resultSet.getString("Title"), resultSet.getString("Description"), resultSet.getString("Status"), resultSet.getString("workplan_Keycode"))); 
+                arrayListObjectives.add(new Objective(resultSet.getInt("IDobjective"), resultSet.getString("Title"), resultSet.getString("Description"), resultSet.getString("Status"), resultSet.getString("workplan_Keycode"))); 
             }
         } catch (SQLException ex) {
             Logger.getLogger(WorkplanDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -212,23 +212,5 @@ public class WorkplanDAO implements IWorkplanDAO {
             connection.disconnect();
         }
         return arrayListStrategys;
-    }
-    
-    @Override
-    public ArrayList<Objective> consulListOfObjectivesArchieved() {
-        String query = "SELECT IDobjective, Title, Description, Status, workplan_Keycode FROM objective WHERE Status = Cumplido";
-        ArrayList<Objective> arrayListObjectives = new ArrayList<>();     
-        try {
-            Statement statement = connection.getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-            while (resultSet.next()) {
-                arrayListObjectives.add(new Objective(resultSet.getString("Title"), resultSet.getString("Description"), resultSet.getString("Status"), resultSet.getString("workplan_Keycode"))); 
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(WorkplanDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            connection.disconnect();
-        }
-        return arrayListObjectives;
     }
 }
