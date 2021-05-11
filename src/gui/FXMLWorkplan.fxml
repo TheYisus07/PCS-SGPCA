@@ -149,7 +149,7 @@
                   <TableColumn fx:id="tableColumnAllObjectiveStatus" prefWidth="208.800048828125" text="Estado" />
               </columns>
             </TableView>
-            <Button layoutX="664.0" layoutY="531.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="94.0" text="GUARDAR">
+            <Button layoutX="664.0" layoutY="531.0" mnemonicParsing="false" onAction="#saveWorkplanAdministration" prefHeight="35.0" prefWidth="94.0" text="GUARDAR">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>

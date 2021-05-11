@@ -3,10 +3,12 @@ package gui;
 import businesslogic.MemberDAO;
 import businesslogic.WorkplanDAO;
 import domain.Objective;
+import domain.Workplan;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -103,6 +105,20 @@ public class ControllerWorkplan implements Initializable {
         mainLateralMenu();
         selectedPendingObjective();
     }  
+    
+    @FXML 
+    public void event(ActionEvent actionEvent) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("FXMLConsultEventHistory.fxml"));
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
+    }
     
     public void fillComboBoxWithWorkplanNames() { 
         ObservableList<String> workplanList = FXCollections.observableArrayList();
@@ -300,6 +316,10 @@ public class ControllerWorkplan implements Initializable {
         return LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(date));
     }
     
+    public Date convertToDate(LocalDate localDate){
+        return java.util.Date.from(localDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+    }
+    
     @FXML
     public void manageWorkplanSelected(ActionEvent actionEvent) {
         boolean isSelectedWorkplan = false;
@@ -329,7 +349,7 @@ public class ControllerWorkplan implements Initializable {
                 datePickerManagedWorkplanFinishDate.setValue(convertToLocalDate(finishDate));
             }
         }
-        llenarTabla(managedWorkplanKeycode);
+        fillTableWithAllObjectives(managedWorkplanKeycode);
         
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -340,7 +360,7 @@ public class ControllerWorkplan implements Initializable {
         }
     }
     
-    public void llenarTabla(String workplanKeycode) {
+    public void fillTableWithAllObjectives(String workplanKeycode) {
         ObservableList<Objective> listOfAllObjectives = FXCollections.observableArrayList();
         for (int i = 0; i < workplanDAO.consultListOfObjectives().size(); i++) {
             if (workplanKeycode.equals(workplanDAO.consultListOfObjectives().get(i).getWorkplanKeyCode())) {
@@ -350,6 +370,40 @@ public class ControllerWorkplan implements Initializable {
         tableColumnAllObjectiveTitles.setCellValueFactory(new PropertyValueFactory("Title"));
         tableColumnAllObjectiveStatus.setCellValueFactory(new PropertyValueFactory("Status"));
         tableViewAllObjectives.setItems(listOfAllObjectives);
+    }
+      
+    @FXML
+    public void saveWorkplanAdministration(ActionEvent actionEvent) {
+        String workplanKeycode = null;
+        String workplanMemberName = null;
+        LocalDate startDate = null;
+        LocalDate finishDate = null;
+        boolean isCorrectWorkplanKeyCode = !(textFieldManagedWorkplanKeycode.getText().equals("".trim()));
+        boolean isCorrectWorkplanStarDate = !(datePickerManagedWorkplanStartDate.getValue() != null); 
+        boolean isCorrectWorkplanFinishDate = !(datePickerManagedWorkplanStartDate.getValue() != null); 
+        
+        //if (isCorrectWorkplanKeyCode && isCorrectWorkplanStarDate && isCorrectWorkplanFinishDate) {
+            workplanKeycode = textFieldManagedWorkplanKeycode.getText(); 
+            startDate = datePickerManagedWorkplanStartDate.getValue();
+            finishDate = datePickerManagedWorkplanFinishDate.getValue();
+            workplanMemberName = labelMemberName.getText();
+        //}
+        //System.out.println(convertToDate(startDate) + " - " + convertToDate(finishDate));
+        Workplan workplan = new Workplan(workplanKeycode, convertToDate(startDate), convertToDate(finishDate), workplanMemberName);
+        int result = workplanDAO.manageWorkPlan(workplan);
+        if (result == 1) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("El Plan de trabajo se administro correctamente");
+            alert.setTitle("Ventana de confirmación");
+            alert.setContentText(null);
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("ERROR EN LA BASE DE DATOS");
+            alert.setTitle("Advertencia");
+            alert.setContentText(null);
+            alert.showAndWait();
+        }
     }
     
     @FXML
