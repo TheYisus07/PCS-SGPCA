@@ -1,4 +1,4 @@
-package bussinesslogic;
+package businesslogic;
 import java.util.List;
 import domain.Event;
 import java.util.ArrayList;

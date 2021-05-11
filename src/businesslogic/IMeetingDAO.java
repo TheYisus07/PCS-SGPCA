@@ -1,4 +1,4 @@
-package bussinesslogic;
+package businesslogic;
 
 import domain.Meeting;
 import java.util.ArrayList;

@@ -1,8 +1,8 @@
 
 package gui;
 
-import bussinesslogic.ConstancyDAO;
-import bussinesslogic.EventDAO;
+import businesslogic.ConstancyDAO;
+import businesslogic.EventDAO;
 import domain.Constancy;
 import domain.Event;
 import java.io.IOException;

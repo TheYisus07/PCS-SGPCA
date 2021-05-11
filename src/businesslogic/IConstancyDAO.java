@@ -1,4 +1,4 @@
-package bussinesslogic;
+package businesslogic;
 
 import domain.Constancy;
 import java.util.ArrayList;

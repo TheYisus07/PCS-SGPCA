@@ -1,7 +1,7 @@
 
 package gui;
 
-import bussinesslogic.EventDAO;
+import businesslogic.EventDAO;
 import domain.Event;
 import java.io.IOException;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package bussinesslogic;
+package businesslogic;
 
 import domain.Member;
 import java.util.ArrayList;

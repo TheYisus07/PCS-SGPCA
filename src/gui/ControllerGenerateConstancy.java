@@ -10,7 +10,7 @@ import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
-import bussinesslogic.ConstancyDAO;
+import businesslogic.ConstancyDAO;
 import domain.Constancy;
 import domain.Event;
 import java.io.IOException;

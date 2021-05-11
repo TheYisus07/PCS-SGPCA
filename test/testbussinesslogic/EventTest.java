@@ -5,7 +5,7 @@
  */
 package testbussinesslogic;
 
-import bussinesslogic.EventDAO;
+import businesslogic.EventDAO;
 import domain.Event;
 import java.sql.Date;
 import java.util.ArrayList;

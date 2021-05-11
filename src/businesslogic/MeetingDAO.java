@@ -1,4 +1,4 @@
-package bussinesslogic;
+package businesslogic;
 
 import dataaccess.Conection;
 import domain.Meeting;
