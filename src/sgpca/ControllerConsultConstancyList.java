@@ -88,7 +88,7 @@ public class ControllerConsultConstancyList implements Initializable {
         this.tableColumnConstancyPosition.setCellValueFactory(new PropertyValueFactory("InstitutionalMailRedpient"));
         TableViewConstancy.setItems(constancyList);
    }
-    
+    /*
     public void showConsultConstancyGUI(){
         TableViewConstancy.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Constancy>(){
             
@@ -116,7 +116,7 @@ public class ControllerConsultConstancyList implements Initializable {
                 }
             }            
         });
-    }
+    }*/
 
     @FXML
     void OpenGenerateConstancyGUI(ActionEvent event) {
@@ -156,7 +156,6 @@ public class ControllerConsultConstancyList implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        showConsultConstancyGUI();
     }    
     
 }

@@ -11,7 +11,6 @@ import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.common.PDRectangle;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import bussinesslogic.ConstancyDAO;
-import bussinesslogic.EventDAO;
 import domain.Constancy;
 import domain.Event;
 import java.io.IOException;
@@ -171,8 +170,6 @@ public class ControllerGenerateConstancy implements Initializable {
             alert.showAndWait();
             Logger.getLogger(ControllerScheduleEvent.class.getName()).log(Level.SEVERE, null, nullPointerException);
         }
-        
-        
     }
     
     @FXML
